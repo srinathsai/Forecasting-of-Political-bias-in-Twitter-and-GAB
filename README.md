@@ -45,5 +45,5 @@ ans errors no of look backs found ideal for below 2 models to be 2 for dataset-1
 - 1. Initial data preprocessing:
     - At first the raw data in the form of json is converted to dataframe .
     - Next, expanded urls and tweet creation timestamp are extracted and stored in another dataframe.
-    - An additional excel sheet is provided which contains respective media channel names with their sub urls.
+    - An additional excel sheet is provided which contains  media channels names with their sub urls and respective leanings.
     -
