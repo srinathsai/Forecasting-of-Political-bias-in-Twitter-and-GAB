@@ -41,4 +41,6 @@ next day or next few days by taking previous days behaviour.***<br />
 **NOTE: As this project has been implemented over 2 datasets of different sizes, after applying keras tunner for hyper parameterization and various trail
 ans errors no of look backs found ideal for below 2 models to be 2 for dataset-1 and 3 for dataset-2.**
 
+## Methodology :
+
 
