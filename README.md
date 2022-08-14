@@ -60,6 +60,12 @@ ans errors no of look backs found ideal for below 2 models to be 2 for dataset-1
     -The above step is repeated for 3 times to get timestamps in 3 different lists of left,right and center.
     - At present we will have 3 lists of timestamps that are left,right and centre.(These lists have duplicates and that is required).
     -Getting how many duplicates for each timestamp in each list gives you frequency of respective leaning tweets per day. So to get frequency of each leaning tweets
-    per day , we use *hashmaps* where in iteration itself if one timestamp is not in key of hashmap then we put in it with value 1. if existed then 
-    we increment respective timestamp value by 1.
-    h
+    per day , we use *hashmaps* where in **iteration itself if one timestamp is not in key of hashmap then we put in it with value 1. if existed then 
+    we increment respective timestamp value by 1**.
+    - At this point of time we will be having 3 hashmaps with timestamps as keys and frequencies as values. These 3 hashmaps are left,right and center 
+    timestamps wioth frequencies.
+    -From this hashmap we will be converting to 3 dataframes .
+ 
+ 
+- 2. Next step of data preprocessing:
+
