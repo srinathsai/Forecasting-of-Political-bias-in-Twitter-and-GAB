@@ -90,9 +90,8 @@ ans errors no of look backs found ideal for below 2 models to be 2 for dataset-1
 ## Note:
 
 - ### 1. Same methodolgy has been applied to 2 datasets of json format which are 4.5 gb and 2.5 gb of sizes.<br />
-- ### 2. 2 tasks have been implemented with this methodology and second task is more specified version of task-1. Task-1 is predicting polarized tweet next or few days, whereas task-2 is adaption rate predicting likes count , shares count or dislikes count.<br />
-- ### 3. The only difference between task-1 and task-2 is that for task-2 in addition with expanded urls, we extract likes count,shares count and dislikes count
-columns in dataframe as well and remaining everything in methodology is same.
+- ### 2. 2 tasks have been implemented with this methodology and second task is more specified version of task-1. Task-1 is predicting polarized tweet next or few           days, whereas task-2 is adaption rate predicting likes count , shares count or dislikes count.<br />
+- ### 3. The only difference between task-1 and task-2 is that for task-2 in addition with expanded urls, we extract likes count,shares count and dislikes count.
 
 
   
