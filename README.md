@@ -46,4 +46,20 @@ ans errors no of look backs found ideal for below 2 models to be 2 for dataset-1
     - At first the raw data in the form of json is converted to dataframe .
     - Next, expanded urls and tweet creation timestamp are extracted and stored in another dataframe.
     - An additional excel sheet is provided which contains  media channels names with their sub urls and respective leanings.
-    -
+    - Now from these dataset we need to regroup all left leaning media suburls into left, all right media suburls into right and all centre leaning media sub
+    urls to centre. For that **HashMap** has been implemented in which keys are leaning and values are list of sub urls that are associated with their respective
+    leaning.<br />
+    - After iterating over whole additional excel sheet now hashmap has just 3 keys of left,right and centre with list of values of sub urls associated with them.
+    - With this hashmap of 3 keys,3 different dataframes are generated in which we get left leaning media sub urls to one dataframe, right leaning media sub urls 
+    to other dataframe and last dataframe contains centre leaning media sub urls.<br />
+    -Later, main task here is to split timestamps from whole initial dataset to left,right and centre. For that to happen we use presence of sub urls
+    in main urls and categorize them according to 3 dataframes that was created before.<br />
+    - We will convert objects type of sub urls and expanded urls to string types in all dataframes.
+    -As the intial dataframe is very huge it requires huge amount of time to iterate. So to make it faster we will first convert to vectorized array.
+    -Now, by using re.find() we will check if respective sub url is present or not in main expanded urls. if present then we add time stamps to a list.
+    -The above step is repeated for 3 times to get timestamps in 3 different lists of left,right and center.
+    - At present we will have 3 lists of timestamps that are left,right and centre.(These lists have duplicates and that is required).
+    -Getting how many duplicates for each timestamp in each list gives you frequency of respective leaning tweets per day. So to get frequency of each leaning tweets
+    per day , we use *hashmaps* where in iteration itself if one timestamp is not in key of hashmap then we put in it with value 1. if existed then 
+    we increment respective timestamp value by 1.
+    
