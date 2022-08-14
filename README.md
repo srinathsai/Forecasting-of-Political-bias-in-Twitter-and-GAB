@@ -42,7 +42,7 @@ next day or next few days by taking previous days behaviour.***<br />
 ans errors no of look backs found ideal for below 2 models to be 2 for dataset-1 and 3 for dataset-2.**
 
 ## Methodology :
-- 1. Initial data preprocessing:
+- ### 1. Initial data preprocessing:
     - At first the raw data in the form of json is converted to dataframe .
     - Next, expanded urls and tweet creation timestamp are extracted and stored in another dataframe.
     - An additional excel sheet is provided which contains  media channels names with their sub urls and respective leanings.
@@ -61,11 +61,32 @@ ans errors no of look backs found ideal for below 2 models to be 2 for dataset-1
     - At present we will have 3 lists of timestamps that are left,right and centre.(These lists have duplicates and that is required).
     -Getting how many duplicates for each timestamp in each list gives you frequency of respective leaning tweets per day. So to get frequency of each leaning tweets
     per day , we use *hashmaps* where in **iteration itself if one timestamp is not in key of hashmap then we put in it with value 1. if existed then 
-    we increment respective timestamp value by 1**.
+    we increment respective timestamp value by 1**.<br />
     - At this point of time we will be having 3 hashmaps with timestamps as keys and frequencies as values. These 3 hashmaps are left,right and center 
-    timestamps wioth frequencies.
-    -From this hashmap we will be converting to 3 dataframes .
+    timestamps wioth frequencies.<br />
+    - From this hashmap we will be converting to 3 dataframes .<br />
  
  
-- 2. Next step of data preprocessing:
+
+- ### 2. Next step of data preprocessing:
+    - As we have left,right and centre timestamps with frequencies we take range of required data, here timestamps between may to december 2018 have taken
+    and converted to timeseries.
+    
+
+- ### 3. Application of grid search for SARIMA parameters and SARIMA MODEL FITTING.
+    - Grid search is a algorithm with wich we can select parameters for the model. It automatically tries all the combinations of SARIMA parameters for the dataset
+    and gives the best combination which showed less RMSE. With these parameters we fit 3 timeserieses to SARIMA model and we will be getting
+    3 different RMSEs for left, right and centre leaning.
+    
+- ### 4. Keras tunning and application of LSTM-1, LSTM-2 and Multistep forecasting.
+    - The timeserieses have been splited to 67,33 or 80,20 percentages of training and testing datasets and applied keras tunner which gives best combination
+    of LSTM parameters with low rmse of all.
+    - After every time running keras tunner for left timeseries, right timeseries and centre time series with respective derived hypermaters LSTM-1, LSTM-2 and
+    multistep forecasting are trained and predicted.
+    
+- ### 5. Conclusion.
+    - All these models are compared based on **RMSE'S (Root Mean Squared Errors)** of all left, right and center timeseries after fitting to above models.
+
+
+  
 
