@@ -95,7 +95,7 @@ of the Twitter data.
     of LSTM parameters with low rmse of all.
 
 ## Outputs :-
-The outputs folder contains 4 images of multi-line plots conveying which average tweet frequency or Gab posts, and total Tweet likes or Gab post likes per month, 2 images of stacked plots in which 1st image contains the Average Compound score per day of tweet content, and another image contains the Average Compound score per day of Gab post content. These are the results that were obtained after applying VADER sentiment analysis. And 2 Excel sheets in which one is  RMSES of Twitter posts, likes and another one is RMSES of Gab posts and their likes.
+The outputs folder contains 4 images of multi-line plots conveying which average tweet frequency or Gab posts, and total Tweet likes or Gab post likes per month, 2 images of stacked plots in which 1st image contains the Average Compound score per day of tweet content, and another image contains the Average Compound score per day of Gab post content. These are the results that were obtained after applying VADER sentiment analysis. And 2 Excel sheets in which one is  RMSES of Twitter posts, likes and another one is RMSES of Gab posts and their likes which were recorded after forecasting with above models.
     
     
 - ### 5. Conclusion.
