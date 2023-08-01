@@ -1,18 +1,18 @@
-# Prediction-of-Polarized-Tweets
+# Forecasting of Political Bias in Twitter and GAB.
 
 ## Introduction.
 
-In order to grasp the attention of huge public, amalgamating polarized content in tweets
-by respective news channel has become a quotidian.<br />
-With this propensity of news media, there has been thousands of tweets circulating
-every day which are leaned in either of the 3 types: left,right and center depending 
+In order to grasp the attention of the huge public, amalgamating polarized content in Twitter and GAB
+by respective news channels has become a quotidian.<br />
+With this propensity of news media, there have been thousands of tweets, and GAB posts circulating
+every day which are leaned in either of the 5 types: left, right, center, left-leaning, and right-leaning depending 
 upon the leaning of their respective media channel.<br />
-The fact that there are enormous number of tweets generating per day raises a very much 
-challenging task of knowing how much polarized tweets can be 
-generated in next day or next few days.<br />
-***This project aims to deal with this challenge by implementing 4 of the timeseries 
-forecasting methods of Machine learning which predicts the behavioir of any quantity in
-next day or next few days by taking previous days behaviour.***<br />
+The fact that there are enormous numbers of tweets and GAB posts generating per day raises a very much 
+challenging task of knowing how much political bias content can be 
+generated in the next day or the next few days.<br />
+***This project aims to deal with this challenge by implementing 5 of the time-series 
+forecasting methods of Machine learning which predicts the behavior of any quantity in
+next day or next few days by taking the previous days' behavior.***<br />
 
 ## Gist of used Timeseries forecasting models.
 
@@ -20,26 +20,33 @@ next day or next few days by taking previous days behaviour.***<br />
 |----------------------------|--------------------------------|---------------------------------------|----------------------------|
 | SARIMA                     |A statistical method used       |                  0                    |              1             |
 |                            |to forecast time series         |                                       |                            |
-|                            |based on  average of lags and   |                                       |                            |
+|                            |based on the average of lags and|                                       |                            |
 |                            | seasonality trends of          |                                       |                            |
-|                            |previous time steps of data .   |                                       |                            |
+|                            |previous time steps of data.    |                                       |                            |
 | LSTM-I                     |A deep learning method which is |                  1                    |              1             |
 |                            |an extension of RNN that is     |                                       |                            |
 |                            |designed to learn a sequential  |                                       |                            |
 |                            |data by preserving them.        |                                       |                            |
-| LSTM-II                    |Same as LSTM-I but only         |                 2,3                   |              1             |
+| LSTM-II                    |Same as LSTM-I but only         |                 14                    |              1             |
 |                            |difference is in LSTM-I we use  |                                       |                            |
-|                            |only one previous day for       |                                       |                            |
+|                            | Only one previous day for      |                                       |                            |
 |                            |predicting next day but here    |                                       |                            |
-|                            |we can use as many lookbacks    |                                       |                            |
-|                            |as we want for next day.        |                                       |                            |
-| MULTISTEP FORECASTING      |A LSTM model,combination of     |                 2,3                   |               6            |
+|                            | We can use as many lookbacks   |                                       |                            |
+|                            |as we want for the next day.    |                                       |                            |
+| MULTISTEP FORECASTING      |A LSTM model,combination of     |                 14                    |              7             |
 |                            |Above two models in which we can|                                       |                            |
-|                            |use as many previous days patern|                                       |                            |
-|                            | to predict as many next days.  |                                       |                            |
+|                            |use as many previous days'      |                                       |                            |
+|                            |patterns to predict next        |                                       |                            |
+|                            |sequence of days.               |                                       |                            |
+|                            |                                |                                       |                            |
+| GRU                        |A simplified version of LSTM in |                 14                    |              1             |
+|                            |which it has only 2 gates       |                                       |                            |
+|                            |reset and update whereas        |                                       |                            |
+|                            |LSTM has 3 gates(input, output  |                                       |                            |
+|                            |and forget gates.               |                                       |                            |
 
-**NOTE: As this project has been implemented over 2 datasets of different sizes, after applying keras tunner for hyper parameterization and various trail
-ans errors no of look backs found ideal for below 2 models to be 2 for dataset-1 and 3 for dataset-2.**
+
+**NOTE: Multiple lookbacks are done vector concatenation and given as input for the models which have 14 days of lookback. And for predicting next 7 days in Multistep time-series forecasting a method called teacher enforcing (Teacher forcing is a method for quickly and efficiently training recurrent neural network models that use the ground truth from a prior time step as input) is established internally which uses previous day's ground truth as input for today and this process continues for vector of 14 days.**
 
 ## Methodology :
 - ### 1. Initial data preprocessing:
