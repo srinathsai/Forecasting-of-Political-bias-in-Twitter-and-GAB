@@ -50,8 +50,7 @@ next day or next few days by taking the previous days' behavior.***<br />
 
 
 ## Datasets :
-Publicly available datasets from Twitter and Gab have been utilized. The Twitter dataset specifically consists of tweets that share news article URLs related to political topics from selected news media sources. The data spans from January 2018 to October 2018, comprising a total of 722,685 tweets. Gab dataset contains a vast collection of 40 million posts, encompassing replies, re-posts, and quotes with URLs and hashtags. The data spans from 2016 to 2018. For the sake of fair analysis, only sampled Gab posts that share news article URLs between January 2018 and October 2018 were collected, aligning with the time range
-of the Twitter data. 
+2018 Twitter and GAB datasets in JSON formats were used.
 
 ## Methodology :
 - ### 1. Initial data preprocessing:
