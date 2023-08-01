@@ -50,7 +50,7 @@ next day or next few days by taking the previous days' behavior.***<br />
 
 
 ## Datasets :
-2018 Twitter and GAB datasets in JSON formats were used.
+2018 Twitter and GAB datasets in JSON formats were used for this project.
 
 ## Methodology :
 - ### 1. Initial data preprocessing:
