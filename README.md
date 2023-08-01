@@ -48,57 +48,64 @@ next day or next few days by taking the previous days' behavior.***<br />
 
 **NOTE: Multiple lookbacks are done vector concatenation and given as input for the models which have 14 days of lookback. And for predicting next 7 days in Multistep time-series forecasting a method called teacher enforcing (Teacher forcing is a method for quickly and efficiently training recurrent neural network models that use the ground truth from a prior time step as input) is established internally which uses previous day's ground truth as input for today and this process continues for vector of 14 days.**
 
+
+## Datasets :
+Publicly available datasets from Twitter and Gab have been utilized. The Twitter dataset specifically consists of tweets that share news article URLs related to political topics from selected news media sources. The data spans from January 2018 to October 2018, comprising a total of 722,685 tweets. Gab dataset contains a vast collection of 40 million posts, encompassing replies, re-posts, and quotes with URLs and hashtags. The data spans from 2016 to 2018. For the sake of fair analysis, only sampled Gab posts that share news article URLs between January 2018 and October 2018 were collected, aligning with the time range
+of the Twitter data. 
+
 ## Methodology :
 - ### 1. Initial data preprocessing:
-    - At first the raw data in the form of json is converted to dataframe .
-    - Next, expanded urls and tweet creation timestamp are extracted and stored in another dataframe.
-    - An additional excel sheet is provided which contains  media channels names with their sub urls and respective leanings.
-    - Now from these dataset we need to regroup all left leaning media suburls into left, all right media suburls into right and all centre leaning media sub
-    urls to centre. For that **HashMap** has been implemented in which keys are leaning and values are list of sub urls that are associated with their respective
+    - At first, the raw data in the form of JSON is converted to a data frame.
+    - Next, expanded URLs and tweet creation timestamps are extracted and stored in another data frame.
+    - An additional Excel sheet is provided which contains media channel names with their sub urls and respective leanings.
+    - Now from these datasets, we need to regroup all left-leaning media suburbs into left- left-leaning, all right media suburbs into right, all centre-leaning media sub
+    URLs to center, all left media to left, and all right-leaning media to right-leaning. For that,  **HashMap** has been implemented in which keys are leaning and values are the list of sub URLs that are associated with their respective
     leaning.<br />
-    - After iterating over whole additional excel sheet now hashmap has just 3 keys of left,right and centre with list of values of sub urls associated with them.
-    - With this hashmap of 3 keys,3 different dataframes are generated in which we get left leaning media sub urls to one dataframe, right leaning media sub urls 
-    to other dataframe and last dataframe contains centre leaning media sub urls.<br />
-    -Later, main task here is to split timestamps from whole initial dataset to left,right and centre. For that to happen we use presence of sub urls
-    in main urls and categorize them according to 3 dataframes that was created before.<br />
-    - We will convert objects type of sub urls and expanded urls to string types in all dataframes.
-    -As the intial dataframe is very huge it requires huge amount of time to iterate. So to make it faster we will first convert to vectorized array.
-    -Now, by using re.find() we will check if respective sub url is present or not in main expanded urls. if present then we add time stamps to a list.
-    -The above step is repeated for 3 times to get timestamps in 3 different lists of left,right and center.
-    - At present we will have 3 lists of timestamps that are left,right and centre.(These lists have duplicates and that is required).
-    -Getting how many duplicates for each timestamp in each list gives you frequency of respective leaning tweets per day. So to get frequency of each leaning tweets
-    per day , we use *hashmaps* where in **iteration itself if one timestamp is not in key of hashmap then we put in it with value 1. if existed then 
-    we increment respective timestamp value by 1**.<br />
-    - At this point of time we will be having 3 hashmaps with timestamps as keys and frequencies as values. These 3 hashmaps are left,right and center 
-    timestamps wioth frequencies.<br />
-    - From this hashmap we will be converting to 3 dataframes .<br />
+    - After iterating over the whole additional Excel sheet now hashmap has just 5 keys of left, right, center, left-leaning, and right-leaning with a list of values of sub URLs associated with them.
+    - With this hashmap of 5 keys,5 different data frames are generated in which we get left-leaning media sub URLs to one data frame, right-leaning media sub urls 
+      to another data frame, right media sub urls to another data frame, left media sub urls to another data frame, and center media URLs to another data frame .<br />
+    -Later, the main task here is to split timestamps from the whole initial dataset to left, right, center,left-leaning, and right-leaning. For that to happen we use the presence of sub urls
+    in main urls and categorize them according to 5 dataframes that were created before.<br />
+    - We will convert the objects type of sub urls and expanded URLs to string types in all data frames.
+    -As the initial data frame is very huge it requires a  huge amount of time to iterate. So to make it faster we will first convert to vectorized array.
+    -Now, by using re .find() we will check if the respective sub URL is present or not in the main expanded urls. if present then we add timestamps to a list.
+    -The above step is repeated for 5 times to get timestamps in 5 different lists of left, right, center, left-leaning, and right-leaning.
+    - At present, we will have 5 lists of timestamps that are left, right, center, left-leaning, and right-leaning. (These lists have duplicates and that is required).
+    -Getting how many duplicates for each timestamp in each list gives you the frequency of respective leaning tweets per day. So to get the frequency of each leaning tweets
+    per day, we use *hashmaps* where in **iteration itself if one timestamp is not in the key of hashmap then we put in it with value 1. If existed then 
+    we increment the respective timestamp value by 1**.<br />
+    - At this point in time we will be having 5 hashmaps with timestamps as keys and frequencies as values. These 5 hashmaps are left, right, center, left-leaning, and right-leaning 
+    timestamps with frequencies.<br />
+    - From these hashmaps, we will be converting to 5 data frames .<br />
  
  
 
 - ### 2. Next step of data preprocessing:
-    - As we have left,right and centre timestamps with frequencies we take range of required data, here timestamps between may to december 2018 have taken
-    and converted to timeseries.
+    - As we have left, right, center, left-leaning, and right-leaning timestamps with frequencies we take a range of required data, here timestamps between May to October 2018 have taken
+    and converted to time series because of outliers and fewer postings from January to May. <br />
     
 
 - ### 3. Application of grid search for SARIMA parameters and SARIMA MODEL FITTING.
-    - Grid search is a algorithm with wich we can select parameters for the model. It automatically tries all the combinations of SARIMA parameters for the dataset
-    and gives the best combination which showed less RMSE. With these parameters we fit 3 timeserieses to SARIMA model and we will be getting
-    3 different RMSEs for left, right and centre leaning.
+    - Grid search is an algorithm with which we can select parameters for the model. It automatically tries all the combinations of SARIMA parameters for the dataset
+    and gives the best combination which showed less RMSE. With these parameters, we fit 5 time series to the  SARIMA model and we will be getting
+    5 different RMSEs for left, right, center, left-leaning, and right-leaning.
     
-- ### 4. Keras tunning and application of LSTM-1, LSTM-2 and Multistep forecasting.
-    - The timeserieses have been splited to 67,33 or 80,20 percentages of training and testing datasets and applied keras tunner which gives best combination
+- ### 4. Keras tunning and application of LSTM-1, LSTM-2, GRU, and Multistep forecasting.
+    - The time series have been split in a window of 60-80, 20-40 percentages of training and testing datasets, and applied Keras tuner which gives the best combination
     of LSTM parameters with low rmse of all.
-    - After every time running keras tunner for left timeseries, right timeseries and centre time series with respective derived hypermaters LSTM-1, LSTM-2 and
-    multistep forecasting are trained and predicted.
+
+## Outputs :-
+The outputs folder contains 4 images of multi-line plots conveying which average tweet frequency or Gab posts, and total Tweet likes or Gab post likes per month, 2 images of stacked plots in which 1st image contains the Average Compound score per day of tweet content, and another image contains the Average Compound score per day of Gab post content. These are the results that were obtained after applying VADER sentiment analysis. And 2 Excel sheets in which one is  RMSES of Twitter posts, likes and another one is RMSES of Gab posts and their likes.
+    
     
 - ### 5. Conclusion.
-    - All these models are compared based on **RMSE'S (Root Mean Squared Errors)** of all left, right and center timeseries after fitting to above models.
+    - All these models are compared based on **RMSE'S (Root Mean Squared Errors)** of all left, right, center, left-leaning, and right-leaning time series after fitting to the above models.
 
 ## Note:
 
-- ### 1. Same methodolgy has been applied to 2 datasets of json format which are 4.5 gb and 2.5 gb of sizes.<br />
-- ### 2. 2 tasks have been implemented with this methodology and second task is more specified version of task-1. Task-1 is predicting polarized tweet next or few           days, whereas task-2 is adaption rate predicting likes count , shares count or dislikes count.<br />
-- ### 3. The only difference between task-1 and task-2 is that for task-2 in addition with expanded urls, we extract likes count,shares count and dislikes count.
+- ### 1. The same methodology has been applied to the GAB dataset as well but the way of preprocessing will be different because of the different JSON format.<br />
+- ### 2. 2 tasks have been implemented with this methodology and the second task is a more specified version of task-1. Task-1 is predicting polarized tweets or Gab posts next few days, whereas task-2 is adaption rate which is predicting Tweet likes or Gab post likes.<br />
+- ### 3. The only difference between task-1 and task-2 is that for task-2 in addition to expanded urls, we extract likes count.
 
 
   
