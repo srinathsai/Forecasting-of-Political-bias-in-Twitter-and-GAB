@@ -1,0 +1,15 @@
+Twitter posts training sizes :-
+all models have 80 percent training size
+Twitter likes :-
+Left :- 70 percent, right :-80, centre :- 70, left leaning:-70, right leaning :- 80.
+Lstm-14 days lookback :- left := train:-67, right same as above, centre :- same as above,left leaning :- 0.6, right leaning :- 0.6
+Multistep :- same as LSTM-14 days sizes.
+Gru :- all 80 percent.
+
+GAB posts :-
+both LSTMS follow same as Twitter.
+
+Likes :- 
+lSTM 1 training sizes are same as twitter likes.
+LSTM-14, Multistep follows same as Lstm-1.
+Gru :- all 80 percent.
