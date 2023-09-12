@@ -1,18 +1,10 @@
 # Forecasting of Political Bias in Twitter and GAB.
 
 ## Introduction.
+In this study, we embark on an innovative research venture aimed at predicting political bias in online social media platforms, such as Twitter and Gab. We frame this as a time series forecasting challenge, where we input a time series of politically biased data and the forecasting model predicts future developments or the next steps in the series. By accurately anticipating how political sentiments evolve over time, we seek to gain insights into the formation of ideological groups and the dissemination of biased information within social media platforms. This knowledge can be invaluable in devising effective strategies to combat misinformation and echo chamber effects. It's worth noting that previous research in forecasting political bias data is limited, making our exploration groundbreaking in this field. We utilize existing time series forecasting models to assess their suitability for this task. Through an analysis of how well these models forecast the time series of political leanings, we aim to uncover their strengths and weaknesses in capturing the temporal dynamics of political bias. As each social media platform has its unique user engagement, popularity, and political ideologies, we conduct experiments using two social media datasets, Twitter and Gab, collected during the same timeframe. In summary, our paper offers two main contributions:
 
-In order to grasp the attention of the huge public, amalgamating polarized content in Twitter and GAB
-by respective news channels has become a quotidian.<br />
-With this propensity of news media, there have been thousands of tweets, and GAB posts circulating
-every day which are leaned in either of the 5 types: left, right, center, left-leaning, and right-leaning depending 
-upon the leaning of their respective media channel.<br />
-The fact that there are enormous numbers of tweets and GAB posts generating per day raises a very much 
-challenging task of knowing how much political bias content can be 
-generated in the next day or the next few days.<br />
-***This project aims to deal with this challenge by implementing 5 of the time-series 
-forecasting methods of Machine learning which predicts the behavior of any quantity in
-next day or next few days by taking the previous days' behavior.***<br />
+***Contribution-1: We introduce a novel challenge of predicting political bias in online social media posts, which is pivotal for understanding the political stance of social media on various topics or events.*** <br />
+***Contribution-2: We experiment with diverse time series forecasting models to quantify trends in different political biases within a social media platform. In our analysis, we examine two social media platforms with distinct political biases: Twitter and Gab***
 
 ## Gist of used Timeseries forecasting models.
 
@@ -50,9 +42,9 @@ next day or next few days by taking the previous days' behavior.***<br />
 
 
 ## Datasets :
-2018 Twitter and GAB datasets in JSON formats were used for this project.
+In this study, we made use of publicly accessible datasets obtained from Twitter in 2018 and Gab in 2018. The Twitter dataset comprises tweets that contain links to news articles related to political topics from selected news sources. This dataset covers the period from January 2018 to October 2018 and includes a total of 722,685 tweets. On the other hand, our Gab dataset from 2018 is extensive, containing 40 million posts, including replies, reposts, and quotes, all featuring URLs and hashtags. The data spans from 2016 to 2018. To ensure a fair analysis, we only considered a subset of Gab posts that shared news article URLs during the period from January 2018 to October 2018, which corresponds to the time frame of the Twitter data. It's worth noting that unlike Twitter, Gab data isn't specifically concentrated on any particular subject, which accounts for its larger number of posts. <br/>
 
-## Methodology :
+## Implementation of Methodology:
 - ### 1. Initial data preprocessing:
     - At first, the raw data in the form of JSON is converted to a data frame.
     - Next, expanded URLs and tweet creation timestamps are extracted and stored in another data frame.
@@ -102,7 +94,7 @@ The outputs folder contains 4 images of multi-line plots conveying which average
 
 ## Note:
 
-- ### 1. The same methodology has been applied to the GAB dataset as well but the way of preprocessing will be different because of the different JSON format.<br />
+- ### 1. The same methodology Implementation has been applied to the GAB dataset as well but the way of preprocessing will be different because of the different JSON format.<br />
 - ### 2. 2 tasks have been implemented with this methodology and the second task is a more specified version of task-1. Task-1 is predicting polarized tweets or Gab posts next few days, whereas task-2 is adaption rate which is predicting Tweet likes or Gab post likes.<br />
 - ### 3. The only difference between task-1 and task-2 is that for task-2 in addition to expanded urls, we extract likes count.
 
